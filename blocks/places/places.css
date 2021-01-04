@@ -1,4 +1,10 @@
 @import url(./__card/places__card.css);
 .places {
-    display: none;
+    max-width: calc(1280px - (200px*2));
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 17px;
+    grid-row-gap: 20px;
 }

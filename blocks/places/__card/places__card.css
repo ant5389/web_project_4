@@ -1,3 +1,10 @@
 @import url(./_like-btn/places__card_like-btn.css);
 @import url(./_location/places__card_location.css);
 @import url(./_picture/places__card_picture.css);
+.places__card {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 282px;
+    height: 361px;
+    border: 1px solid red;
+}
