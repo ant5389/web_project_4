@@ -1,1 +1,9 @@
 @import url(./_btn/profile__profile-info_edit-box_btn.css);
+.profile__profile-info_edit-box {
+    width: 24px;
+    height: 24px;
+    margin: 32px 0 0 18px;
+    padding: 0;
+    display: flex;
+    border: 1px solid #fff;
+}

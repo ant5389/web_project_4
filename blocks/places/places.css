@@ -1,1 +1,4 @@
 @import url(./__card/places__card.css);
+.places {
+    display: none;
+}
