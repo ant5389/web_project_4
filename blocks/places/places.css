@@ -8,3 +8,10 @@
     grid-column-gap: 17px;
     grid-row-gap: 20px;
 }
+
+@media screen and (max-width: 1023px) {
+    .places {
+        max-width: calc(320px - (19px*2));
+        grid-template-columns: 1fr;
+    }
+}

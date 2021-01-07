@@ -2,7 +2,18 @@
 @import url(./_name/profile__profile-info_name.css);
 @import url(./_subtitle/profile__profile-info_subtitle.css);
 .profile__profile-info {
-    margin: 0 0 0 30px;
+    margin: 22px 0 0 30px;
     padding: 0;
-    align-self: center;
+    max-width: 415px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1023px) {
+    .profile__profile-info {
+        margin: 30px 0 0 0;
+        max-width: 275px;
+        justify-content: center;
+    }
 }
