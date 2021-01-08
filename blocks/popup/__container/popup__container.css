@@ -2,6 +2,7 @@
 @import url(./_save/popup__container_save.css);
 @import url(./_field-a/popup__container_field-a.css);
 @import url(./_field-b/popup__container_field-b.css);
+@import url(./_close/popup__container_close.css);
 .popup__container {
     background-color: #fff;
     color: #000;
@@ -12,7 +13,13 @@
     height: 330px;
     top: 50%;
     left: 50%;
-    margin-top: -165px;
-    margin-left: -215px;
+    transform: translate(-50%, -50%);
     z-index: 2;
+}
+
+@media screen and (max-width: 1023px) {
+    .popup__container {
+        width: 282px;
+        height: 322px;
+    }
 }

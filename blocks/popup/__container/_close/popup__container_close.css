@@ -1,0 +1,26 @@
+@import url(./_img/popup__container_close_img.css);
+.popup__container_close {
+    background-color: #000;
+    border: none;
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    margin-top: -40px;
+    margin-left: 420px;
+    z-index: 2;
+    cursor: pointer;
+    transition: opacity 0.5s linear 0s;
+}
+
+.popup__container_close:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 1023px) {
+    .popup__container_close {
+        width: 26px;
+        height: 26px;
+        margin-top: -40px;
+        margin-left: 250px;
+    }
+}
