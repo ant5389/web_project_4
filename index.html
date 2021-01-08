@@ -10,6 +10,19 @@
 
 <body>
     <div class="page">
+        <div class="popup" id="editProfile">
+            <button type="button" class="popup__close">
+                <img src="./images/close.svg" alt="X">
+            </button>
+            <form class="popup__container">
+                <h2 class="popup__container_title">Edit Profile</h2>
+                <label for="name"></label>
+                <input type="text" class="popup__container_field-a" placeholder="Name" name="name">
+                <label for="subtitle"></label>
+                <input type="text" class="popup__container_field-b" placeholder="About me" name="subtitle">
+                <button type="submit" class="popup__container_save">Save</button>
+            </form>
+        </div>
         <header class="header">
             <img class="header__logo" src="./images/logo.svg" alt="Around the U.S.">
         </header>
@@ -18,14 +31,14 @@
                 <img class="profile__avatar" src="./images/jacques-cousteau.jpeg" alt="Jacques Cousteau Pic">
                 <div class="profile__profile-info">
                     <h1 class="profile__profile-info_name">Jacques Cousteau</h1>
-                    <div class="profile__profile-info_edit-box">
+                    <button type="button" class="profile__profile-info_edit-box">
                         <img class="profile__profile-info_edit-box_btn" src="./images/edit.svg" alt="Edit Icon">
-                    </div>
+                    </button>
                     <p class="profile__profile-info_subtitle">Explorer</p>
                 </div>
-                <div class="profile__add-pic">
+                <button type="button" class="profile__add-pic">
                     <img class="profile__add-pic_btn" src="./images/add.svg" alt="Add Picture Icon">
-                </div>
+                </button>
             </section>
             <section class="places">
                 <div class="places__card">

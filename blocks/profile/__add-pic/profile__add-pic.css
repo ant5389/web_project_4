@@ -7,6 +7,14 @@
     margin-left: auto;
     border: 2px solid #fff;
     border-radius: 2px;
+    background-color: #000;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.5s linear 0s;
+}
+
+.profile__add-pic:hover {
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 1023px) {

@@ -1,0 +1,18 @@
+@import url(./_title/popup__container_title.css);
+@import url(./_save/popup__container_save.css);
+@import url(./_field-a/popup__container_field-a.css);
+@import url(./_field-b/popup__container_field-b.css);
+.popup__container {
+    background-color: #fff;
+    color: #000;
+    position: fixed;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    width: 430px;
+    height: 330px;
+    top: 50%;
+    left: 50%;
+    margin-top: -165px;
+    margin-left: -215px;
+    z-index: 2;
+}

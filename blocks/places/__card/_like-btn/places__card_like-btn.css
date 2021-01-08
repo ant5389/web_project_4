@@ -5,4 +5,10 @@
     padding: 0;
     position: relative;
     display: inline-block;
+    cursor: pointer;
+    transition: opacity 1s linear 0s;
+}
+
+.places__card_like-btn:hover {
+    opacity: 0.5;
 }
