@@ -1,12 +1,12 @@
-const popup = document.getElementById('editProfile');
-const editButton = document.getElementById('editButton');
-const submitButton = document.getElementById('submitButton');
-const closeButton = document.getElementById('closeButton');
-const nameInput = document.getElementById('nameInput');
-const subtitleInput = document.getElementById('subtitleInput');
-const nameHeader = document.getElementById('nameHeader');
-const subtitleText = document.getElementById('subtitleText');
-const placesSection = document.getElementById('placesSection');
+let popup = document.getElementById('editProfile');
+let editButton = document.getElementById('editButton');
+let submitButton = document.getElementById('submitButton');
+let closeButton = document.getElementById('closeButton');
+let nameInput = document.getElementById('nameInput');
+let subtitleInput = document.getElementById('subtitleInput');
+let nameHeader = document.getElementById('nameHeader');
+let subtitleText = document.getElementById('subtitleText');
+let placesSection = document.getElementById('placesSection');
 
 editButton.addEventListener('click', openPopup);
 closeButton.addEventListener('click', closePopup);
@@ -26,8 +26,8 @@ function closePopup() {
 // submit info
 function submitProfile(event) {
     event.preventDefault();
-    const name = nameInput.value;
-    const subtitle = subtitleInput.value;
+    let name = nameInput.value;
+    let subtitle = subtitleInput.value;
     nameHeader.innerText = name;
     subtitleText.innerText = subtitle;
     nameInput.value = '';
@@ -37,7 +37,7 @@ function submitProfile(event) {
 
 // like button
 function toggleLike(event) {
-    const element = event.target;
+    let element = event.target;
     if (element.alt === "Heart") {
         if (element.src.includes("like.svg")) {
             element.src = "./images/like-active.svg";
