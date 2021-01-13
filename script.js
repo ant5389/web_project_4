@@ -1,6 +1,6 @@
 let popup = document.getElementById('editProfile');
 let editButton = document.getElementById('editButton');
-let submitButton = document.getElementById('submitButton');
+let editForm = document.getElementById('editForm');
 let closeButton = document.getElementById('closeButton');
 let nameInput = document.getElementById('nameInput');
 let subtitleInput = document.getElementById('subtitleInput');
@@ -8,10 +8,6 @@ let nameHeader = document.getElementById('nameHeader');
 let subtitleText = document.getElementById('subtitleText');
 let placesSection = document.getElementById('placesSection');
 
-editButton.addEventListener('click', openPopup);
-closeButton.addEventListener('click', closePopup);
-submitButton.addEventListener('click', submitProfile);
-placesSection.addEventListener('click', toggleLike)
 
 // open popup
 function openPopup() {
@@ -30,8 +26,6 @@ function submitProfile(event) {
     let subtitle = subtitleInput.value;
     nameHeader.innerText = name;
     subtitleText.innerText = subtitle;
-    nameInput.value = '';
-    subtitleInput.value = '';
     closePopup();
 }
 
@@ -46,3 +40,9 @@ function toggleLike(event) {
         }
     }
 }
+
+// event listeners
+editButton.addEventListener('click', openPopup);
+closeButton.addEventListener('click', closePopup);
+placesSection.addEventListener('click', toggleLike);
+editForm.addEventListener('submit', submitProfile);
