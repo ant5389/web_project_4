@@ -1,5 +1,4 @@
-@import url(./_img/popup__container_close_img.css);
-.popup__container_close {
+.popup__close {
     background-color: #000;
     border: none;
     position: fixed;
@@ -12,12 +11,12 @@
     transition: opacity 0.5s linear 0s;
 }
 
-.popup__container_close:hover {
+.popup__close:hover {
     opacity: 0.6;
 }
 
 @media screen and (max-width: 1023px) {
-    .popup__container_close {
+    .popup__close {
         margin-top: -40px;
         margin-left: 250px;
     }

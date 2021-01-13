@@ -1,5 +1,4 @@
-@import url(./_btn/profile__profile-info_edit-box_btn.css);
-.profile__profile-info_edit-box {
+.profile__edit-box {
     width: 24px;
     height: 24px;
     margin: 15px 0 0 18px;
@@ -12,12 +11,12 @@
     transition: opacity 0.5s linear 0s;
 }
 
-.profile__profile-info_edit-box:hover {
+.profile__edit-box:hover {
     opacity: 0.6;
 }
 
 @media screen and (max-width: 1023px) {
-    .profile__profile-info_edit-box {
+    .profile__edit-box {
         width: 18px;
         height: 18px;
         margin: -10px 0 0 10px;

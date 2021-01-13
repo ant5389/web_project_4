@@ -1,5 +1,11 @@
 @import url(./__overlay/popup__overlay.css);
 @import url(./__container/popup__container.css);
+@import url(./__close/popup__close.css);
+@import url(./__field-a/popup__field-a.css);
+@import url(./__field-b/popup__field-b.css);
+@import url(./__save/popup__save.css);
+@import url(./__title/popup__title.css);
+@import url(./__x-img/popup__x-img.css);
 .popup {
     display: none;
     width: 100%;

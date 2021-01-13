@@ -1,11 +1,11 @@
-.profile__profile-info_edit-box_btn {
+.profile__edit-btn {
     width: 10px;
     height: 10px;
     margin: auto;
 }
 
 @media screen and (max-width: 1023px) {
-    .profile__profile-info_edit-box_btn {
+    .profile__edit-btn {
         width: 7.5px;
         height: 7.5px;
     }

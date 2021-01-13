@@ -1,5 +1,5 @@
-.popup__container_field-b {
-    margin: 30px 36px 0 36px;
+.popup__field-a {
+    margin: 54px 36px 0 36px;
     padding: 0;
     width: 358px;
     height: 28px;
@@ -10,8 +10,8 @@
 }
 
 @media screen and (max-width: 1023px) {
-    .popup__container_field-b {
-        margin: 30px 22px 0 22px;
+    .popup__field-a {
+        margin: 75px 22px 0 22px;
         width: 238px;
     }
 }

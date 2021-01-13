@@ -1,8 +1,3 @@
-@import url(./_title/popup__container_title.css);
-@import url(./_save/popup__container_save.css);
-@import url(./_field-a/popup__container_field-a.css);
-@import url(./_field-b/popup__container_field-b.css);
-@import url(./_close/popup__container_close.css);
 .popup__container {
     background-color: #fff;
     color: #000;
