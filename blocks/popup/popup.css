@@ -1,15 +1,17 @@
-@import url(./__overlay/popup__overlay.css);
 @import url(./__container/popup__container.css);
 @import url(./__close/popup__close.css);
-@import url(./__field-a/popup__field-a.css);
-@import url(./__field-b/popup__field-b.css);
+@import url(./__field/popup__field-a.css);
 @import url(./__save/popup__save.css);
 @import url(./__title/popup__title.css);
-@import url(./__x-img/popup__x-img.css);
 .popup {
+    background-color: rgba(0, 0, 0, 0.5);
     display: none;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     position: fixed;
     z-index: 1;
+    justify-content: center;
+    align-items: center;
 }

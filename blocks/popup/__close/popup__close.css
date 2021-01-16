@@ -1,11 +1,14 @@
 .popup__close {
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(../../../images/close.svg);
+    background-position: center;
     border: none;
-    position: fixed;
-    width: 0px;
-    height: 0px;
-    margin-top: -40px;
-    margin-left: 420px;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: calc(50% - 200px);
+    right: calc(50% - 250px);
+    margin: 0;
     padding: 0;
     cursor: pointer;
     transition: opacity 0.5s linear 0s;
@@ -17,7 +20,9 @@
 
 @media screen and (max-width: 1023px) {
     .popup__close {
-        margin-top: -48px;
-        margin-left: 275px;
+        width: 26px;
+        height: 26px;
+        top: calc(50% - 230px);
+        right: calc(50% - 140px);
     }
 }
