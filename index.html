@@ -10,20 +10,6 @@
 
 <body>
     <div class="page">
-        <div class="popup" id="editProfile">
-            <div class="popup__overlay"></div>
-            <form class="popup__container" id="editForm">
-                <button type="button" class="popup__close" id="closeButton">
-                    <img class="popup__x-btn" src="./images/close.svg" alt="X">
-                </button>
-                <h2 class="popup__title">Edit Profile</h2>
-                <label for="nameInput"></label>
-                <input type="text" class="popup__field-a" placeholder="Jacques Cousteau" name="nameInput" id="nameInput">
-                <label for="subtitleInput"></label>
-                <input type="text" class="popup__field-b" placeholder="Explorer" name="subtitleInput" id="subtitleInput">
-                <button type="submit" class="popup__save" id="submitButton">Save</button>
-            </form>
-        </div>
         <header class="header">
             <img class="header__logo" src="./images/logo.svg" alt="Around the U.S.">
         </header>
@@ -41,7 +27,7 @@
                     <img class="profile__add-btn" src="./images/add.svg" alt="Add Picture Icon">
                 </button>
             </section>
-            <section class="places" id="placesSection">
+            <section class="places">
                 <div class="places__card">
                     <img class="places__picture" src="./images/grand-canyon.jpg" alt="Grand Canyon">
                     <h2 class="places__location">Grand Canyon</h2>
@@ -77,6 +63,16 @@
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 Around The U.S.</p>
         </footer>
+        <div class="popup" id="editProfile">
+            <div class="popup__overlay"></div>
+            <form class="popup__container" id="editForm">
+                <button type="button" class="popup__close" id="closeButton"></button>
+                <h2 class="popup__title">Edit Profile</h2>
+                <input type="text" class="popup__field" value="Jacques Cousteau" placeholder="Name" name="nameInput" id="nameInput">
+                <input type="text" class="popup__field" value="Explorer" placeholder="About" name="subtitleInput" id="subtitleInput">
+                <button type="submit" class="popup__save" id="submitButton">Save</button>
+            </form>
+        </div>
     </div>
     <script src=" ./script.js "></script>
 </body>
