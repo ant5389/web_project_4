@@ -3,18 +3,12 @@
 @import url(./__location/places__location.css);
 @import url(./__picture/places__picture.css);
 .places {
-    max-width: calc(1280px - (200px*2));
+    max-width: 880px;
     margin: 0 auto;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, 282px);
     grid-column-gap: 17px;
     grid-row-gap: 20px;
-}
-
-@media screen and (max-width: 1023px) {
-    .places {
-        max-width: calc(320px - (19px*2));
-        grid-template-columns: 1fr;
-    }
+    justify-content: center;
 }
