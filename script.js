@@ -28,12 +28,12 @@ function submitProfile(event) {
 
 // auto-fill input fields
 function openEditProfileForm() {
-    nameHeader.innerText = nameInput.value;
-    subtitleText.innerText = subtitleInput.value;
+    nameInput.value = nameHeader.innerText;
+    subtitleInput.value = subtitleText.innerText;
     openPopup();
 }
 
 // event listeners
-editButton.addEventListener('click', openPopup);
+editButton.addEventListener('click', openEditProfileForm);
 closeButton.addEventListener('click', closePopup);
 editForm.addEventListener('submit', submitProfile);

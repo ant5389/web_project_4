@@ -3,11 +3,11 @@
     background-image: url(../../../images/close.svg);
     background-position: center;
     border: none;
-    position: absolute;
+    position: relative;
     width: 40px;
     height: 40px;
-    top: calc(50% - 200px);
-    right: calc(50% - 250px);
+    top: -75px;
+    right: -395px;
     margin: 0;
     padding: 0;
     cursor: pointer;
@@ -18,11 +18,11 @@
     opacity: 0.6;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 480px) {
     .popup__close {
         width: 26px;
         height: 26px;
-        top: calc(50% - 230px);
-        right: calc(50% - 140px);
+        top: -80px;
+        right: -230px;
     }
 }

@@ -13,7 +13,7 @@
     margin-bottom: 48px;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 480px) {
     .popup__field {
         margin-bottom: 30px;
     }
