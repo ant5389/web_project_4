@@ -10,6 +10,9 @@ const addCard = document.querySelector('.popup_type_addcard');
 const addButton = document.querySelector('.profile__add-pic');
 const addForm = document.querySelector('.popup__container_type_addcard');
 const addCloseButton = document.querySelector('.popup__close_type_addcard');
+const titleInput = document.getElementById('titleInput');
+const linkInput = document.getElementById('linkInput');
+const likeButton = document.querySelector('.places__like-btn');
 
 
 // open edit popup
@@ -40,6 +43,13 @@ function submitProfile(event) {
     closePopup();
 }
 
+// add new card
+function addNewCard(event) {
+    event.preventDefault();
+
+    closeAddcard();
+}
+
 // auto-fill input fields
 function openEditProfileForm() {
     nameInput.value = nameHeader.innerText;
@@ -47,9 +57,16 @@ function openEditProfileForm() {
     openPopup();
 }
 
+// like picture
+function toggleLike() {
+    likeButton.classList.toggle('places__like-btn_active');
+}
+
+
 // event listeners
 editButton.addEventListener('click', openEditProfileForm);
 editCloseButton.addEventListener('click', closePopup);
 editForm.addEventListener('submit', submitProfile);
 addButton.addEventListener('click', openAddcard);
 addCloseButton.addEventListener('click', closeAddcard);
+likeButton.addEventListener('click', toggleLike);
