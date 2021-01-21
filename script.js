@@ -1,14 +1,18 @@
-let popup = document.getElementById('editProfile');
-let editButton = document.getElementById('editButton');
-let editForm = document.getElementById('editForm');
-let closeButton = document.getElementById('closeButton');
-let nameInput = document.getElementById('nameInput');
-let subtitleInput = document.getElementById('subtitleInput');
-let nameHeader = document.getElementById('nameHeader');
-let subtitleText = document.getElementById('subtitleText');
+const popup = document.querySelector('.popup');
+const editButton = document.querySelector('.profile__edit-box');
+const editForm = document.querySelector('.popup__container');
+const editCloseButton = document.querySelector('.popup__close');
+const nameInput = document.getElementById('nameInput');
+const subtitleInput = document.getElementById('subtitleInput');
+const nameHeader = document.querySelector('.profile__name');
+const subtitleText = document.querySelector('.profile__subtitle');
+const addCard = document.querySelector('.popup_type_addcard');
+const addButton = document.querySelector('.profile__add-pic');
+const addForm = document.querySelector('.popup__container_type_addcard');
+const addCloseButton = document.querySelector('.popup__close_type_addcard');
 
 
-// open popup
+// open edit popup
 function openPopup() {
     popup.classList.add('popup_opened');
 }
@@ -16,6 +20,16 @@ function openPopup() {
 // close edit window
 function closePopup() {
     popup.classList.remove('popup_opened');
+}
+
+// open addcard
+function openAddcard() {
+    addCard.classList.add('popup_opened');
+}
+
+// close addcard
+function closeAddcard() {
+    addCard.classList.remove('popup_opened');
 }
 
 // submit info
@@ -35,5 +49,7 @@ function openEditProfileForm() {
 
 // event listeners
 editButton.addEventListener('click', openEditProfileForm);
-closeButton.addEventListener('click', closePopup);
+editCloseButton.addEventListener('click', closePopup);
 editForm.addEventListener('submit', submitProfile);
+addButton.addEventListener('click', openAddcard);
+addCloseButton.addEventListener('click', closeAddcard);
