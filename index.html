@@ -27,44 +27,9 @@
                     <img class="profile__add-btn" src="./images/add.svg" alt="Add Picture Icon">
                 </button>
             </section>
-            <section class="places">
-                <div class="places__card">
-                    <button type="button" class="places__remove"></button>
-                    <img class="places__picture" src="./images/grand-canyon.jpg" alt="Grand Canyon">
-                    <h2 class="places__location">Grand Canyon</h2>
-                    <button type="button" class="places__like-btn"></button>
-                </div>
-                <div class="places__card">
-                    <button type="button" class="places__remove"></button>
-                    <img class="places__picture" src="./images/miami.jpg" alt="Miami Neons at Night">
-                    <h2 class="places__location">Miami, FL</h2>
-                    <button type="button" class="places__like-btn"></button>
-                </div>
-                <div class="places__card">
-                    <button type="button" class="places__remove"></button>
-                    <img class="places__picture" src="./images/maine.jpg" alt="Maine Lighthouse">
-                    <h2 class="places__location">Cape Elizabeth, ME</h2>
-                    <button type="button" class="places__like-btn"></button>
-                </div>
-                <div class="places__card">
-                    <button type="button" class="places__remove"></button>
-                    <img class="places__picture" src="./images/hawaii.jpg" alt="Hawaii Lava Flow">
-                    <h2 class="places__location">Mauna Loa, Hawaii Island></h2>
-                    <button type="button" class="places__like-btn"></button>
-                </div>
-                <div class="places__card">
-                    <button type="button" class="places__remove"></button>
-                    <img class="places__picture" src="./images/alaska.jpg" alt="Alaskan Mountains">
-                    <h2 class="places__location">Alaska</h2>
-                    <button type="button" class="places__like-btn"></button>
-                </div>
-                <div class="places__card">
-                    <button type="button" class="places__remove"></button>
-                    <img class="places__picture" src="./images/las-vegas.jpg" alt="Las Vegas Fountain">
-                    <h2 class="places__location">Las Vegas, NV</h2>
-                    <button type="button" class="places__like-btn"></button>
-                </div>
-            </section>
+            <template class="places" id="places">
+                <!--placeholder for cards-->
+            </template>
         </main>
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 Around The U.S.</p>
@@ -86,6 +51,11 @@
                 <input type="text" class="popup__field popup__field_type_addcard" placeholder="Image link" name="linkInput" id="linkInput">
                 <button type="submit" class="popup__save popup__save_type_addcard">Create</button>
             </form>
+        </div>
+        <div class="zoom">
+            <button type="button" class="zoom__close"></button>
+            <img class="zoom__image" src="//:0" alt="#">
+            <h3 class="zoom__caption"></h3>
         </div>
     </div>
     <script src=" ./script.js "></script>
