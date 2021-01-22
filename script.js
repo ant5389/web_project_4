@@ -72,7 +72,7 @@ function createCard(src, alt, text) {
 
     removeButton.addEventListener('click', removeCard);
     likeButton.addEventListener('click', toggleLike);
-    //add event listener to images
+    // add event listener for image
     cardDiv.append(...[removeButton, image, locationName, likeButton]);
     return cardDiv;
 }
@@ -136,10 +136,13 @@ function toggleLike(event) {
     likeButton.classList.toggle('places__like-btn_active');
 }
 
-// zoom image
-//function imageZoom(event) {
-//    const gggggg = event.target;
-//}
+// open zoomed image
+
+
+
+// close zoomed pic
+
+
 
 // event listeners
 editButton.addEventListener('click', openEditProfileForm);

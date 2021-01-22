@@ -1,0 +1,28 @@
+.zoom__close {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(../../../images/close.svg);
+    background-position: center;
+    border: none;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 46px;
+    right: 46px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.5s linear 0s;
+}
+
+.zoom__close:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 480px) {
+    .zoom__close {
+        width: 26px;
+        height: 26px;
+        top: -50px;
+        right: 0;
+    }
+}

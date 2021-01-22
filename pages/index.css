@@ -9,3 +9,4 @@
 @import url(../blocks/places/places.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/zoom/zoom.css);
+@import url(../blocks/zoom/_opened/zoom_opened.css);
