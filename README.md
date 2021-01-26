@@ -12,11 +12,11 @@ This project is a web page for viewing photographs taken from around the United 
 
 **Techniques**
 
-The techniques used to create this page include an editable profile name and description created through javascript by opening up a popup window. The popup window appears with a tinted overlay to focus attention and make the "Edit Profile" window easier to read. You can submit a custom input to edit the corresponding fields on the profile page. Each photograph is laid out in a structured grid with each location having its own card. Each card has a location name with a functional like button. If the location name is too long for the card, ellipses are created to keep a clean overall look. 
+The techniques used to create this page include an editable profile name and description created through javascript by opening up a popup window. The popup window appears with a tinted overlay to focus attention and make the "Edit Profile" window easier to read. You can submit a custom input to edit the corresponding fields on the profile page. Each photograph is laid out in a structured grid with each location having its own card. Each card has a location name with a functional like button. If the location name is too long for the card, ellipses are created to keep a clean overall look. Users have the ability to add their own custom photos onto the existing photo grid by inputting a link. You can also remove photos and like your favorite ones. All overlays appear in a smooth fade transition.
 
 **Future Improvements**
 
-In the future, you will be able to add your own photographs by using the "Add Picture" button towards the top of the page. You will also be able to change the avatar picture to whatever you choose. This will all be done through adding onto the javascript code.
+In the future, you will be able to change the avatar picture to whatever you choose. This will be done through adding onto the javascript code.
 
 **Project**
 
