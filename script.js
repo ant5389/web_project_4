@@ -13,6 +13,8 @@ const addPic = document.querySelector('.popup__save_type_addcard');
 const titleInput = document.getElementById('titleInput');
 const linkInput = document.getElementById('linkInput');
 const placesTemplate = document.querySelector('.places');
+const imagePopup = document.querySelector('.popup_type_image');
+const closeImagePopup = imagePopup.querySelector('.popup__close');
 
 const initialCards = [{
         text: "Yosemite Valley",
@@ -56,46 +58,64 @@ placesTemplate.append(...cardElements);
 function createCard(src, alt, text) {
     const cardDiv = document.createElement('div');
     const removeButton = document.createElement('button');
-    const image = document.createElement('img');
+    const imageLink = document.createElement('img');
     const locationName = document.createElement('h2');
     const likeButton = document.createElement('button');
 
     cardDiv.classList.add('places__card');
     removeButton.classList.add('places__remove');
-    image.classList.add('places__picture');
+    imageLink.classList.add('places__picture');
     locationName.classList.add('places__location');
     likeButton.classList.add('places__like-btn');
 
-    image.setAttribute('src', src);
-    image.setAttribute('alt', alt);
+    imageLink.setAttribute('src', src);
+    imageLink.setAttribute('alt', alt);
     locationName.innerText = text;
 
     removeButton.addEventListener('click', removeCard);
     likeButton.addEventListener('click', toggleLike);
-    // add event listener for image
-    cardDiv.append(...[removeButton, image, locationName, likeButton]);
+    imageLink.addEventListener('click', () => {
+        const popupImage = document.querySelector('.popup__image');
+        const popupImageTitle = document.querySelector('.popup__image-title');
+
+        popupImage.src = src;
+        popupImageTitle.textContent = text;
+
+        openImage();
+    });
+
+    cardDiv.append(...[removeButton, imageLink, locationName, likeButton]);
     return cardDiv;
 }
 
-// open edit popup
+
+// open modals
 function openPopup() {
     popup.classList.add('popup_opened');
 }
 
-// close edit window
-function closePopup() {
-    popup.classList.remove('popup_opened');
-}
-
-// open addcard
 function openAddcard() {
     addCard.classList.add('popup_opened');
 }
 
-// close addcard
+function openImage() {
+    imagePopup.classList.add('popup_opened');
+}
+
+
+// close modals
+function closePopup() {
+    popup.classList.remove('popup_opened');
+}
+
 function closeAddcard() {
     addCard.classList.remove('popup_opened');
 }
+
+function closeImage() {
+    imagePopup.classList.remove('popup_opened');
+}
+
 
 // create new card
 function addNewCard(event) {
@@ -136,13 +156,6 @@ function toggleLike(event) {
     likeButton.classList.toggle('places__like-btn_active');
 }
 
-// open zoomed image
-
-
-
-// close zoomed pic
-
-
 
 // event listeners
 editButton.addEventListener('click', openEditProfileForm);
@@ -151,3 +164,4 @@ editForm.addEventListener('submit', submitProfile);
 addButton.addEventListener('click', openAddcard);
 addCloseButton.addEventListener('click', closeAddcard);
 addPic.addEventListener('click', addNewCard);
+closeImagePopup.addEventListener('click', closeImage);

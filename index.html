@@ -28,7 +28,6 @@
                 </button>
             </section>
             <template class="places" id="places">
-                <!--placeholder for cards-->
             </template>
         </main>
         <footer class="footer">
@@ -52,10 +51,14 @@
                 <button type="submit" class="popup__save popup__save_type_addcard">Create</button>
             </form>
         </div>
-        <div class="zoom">
-            <button type="button" class="zoom__close"></button>
-            <img class="zoom__image">
-            <h3 class="zoom__caption"></h3>
+        <div class="popup popup_type_image">
+            <div class="popup__container popup__container_type_image">
+                <figure class="popup__figure">
+                    <button type="button" class="popup__close"></button>
+                    <img class="popup__image" src="" alt="">
+                    <figcaption class="popup__image-title"></figcaption>
+                </figure>
+            </div>
         </div>
     </div>
     <script src=" ./script.js "></script>
