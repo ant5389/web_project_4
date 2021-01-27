@@ -45,6 +45,7 @@ initialCards.forEach(data => {
 
     cardImage.src = data.src;
     cardTitle.textContent = data.text;
+    cardImage.alt = data.alt;
 
     cardRemove.addEventListener('click', removeCard);
     cardLike.addEventListener('click', toggleLike);
@@ -52,14 +53,15 @@ initialCards.forEach(data => {
     cardImage.addEventListener('click', () => {
         popupImage.src = data.src;
         popupImageTitle.textContent = data.text;
+        popupImage.alt = data.alt;
 
         toggleModalWindow(imageModalWindow);
     })
 
-    list.prepend(cardElement);
+    list.append(cardElement);
 })
 
-// create new card
+// add new card
 function addNewCard(event) {
     event.preventDefault();
 
@@ -71,6 +73,7 @@ function addNewCard(event) {
     const cardLike = cardElement.querySelector('.places__like-btn');
 
     cardImage.src = linkInput.value;
+    cardImage.alt = titleInput.value;
     cardTitle.textContent = titleInput.value;
 
     cardRemove.addEventListener('click', removeCard);
@@ -79,6 +82,7 @@ function addNewCard(event) {
     cardImage.addEventListener('click', () => {
         popupImage.src = cardImage.src;
         popupImageTitle.textContent = cardTitle.textContent;
+        popupImage.alt = cardTitle.textContent;
 
         toggleModalWindow(imageModalWindow);
     })
