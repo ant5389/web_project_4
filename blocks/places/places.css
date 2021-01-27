@@ -4,6 +4,7 @@
 @import url(./__location/places__location.css);
 @import url(./__picture/places__picture.css);
 @import url(./__remove/places__remove.css);
+@import url(./__list/places__list.css);
 .places {
     max-width: 880px;
     margin: 0 auto;
