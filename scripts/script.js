@@ -1,4 +1,5 @@
 const editForm = document.querySelector('.popup__container');
+const addForm = document.querySelector('.popup__container_type_addcard');
 
 // open buttons
 const editButton = document.querySelector('.profile__edit-box');
@@ -18,10 +19,9 @@ const nameHeader = document.querySelector('.profile__name');
 const subtitleText = document.querySelector('.profile__subtitle');
 const addCardModal = document.querySelector('.popup_type_addcard');
 const editProfileModal = document.querySelector('.popup_type_edit-profile');
-const imagePopup = document.querySelector('.popup_type_image');
-const closeImagePopup = imagePopup.querySelector('.popup__close');
 const addPic = document.querySelector('.popup__save_type_addcard');
 const imageModalWindow = document.querySelector('.popup_type_image');
+const closeImagePopup = imageModalWindow.querySelector('.popup__close');
 const popupImage = imageModalWindow.querySelector('.popup__image');
 const popupImageTitle = imageModalWindow.querySelector('.popup__image-title');
 
@@ -121,7 +121,7 @@ function toggleLike(event) {
 // event listeners
 editButton.addEventListener('click', openEditProfileForm);
 editForm.addEventListener('submit', submitProfile);
-addPic.addEventListener('click', addNewCard);
+addForm.addEventListener('submit', addNewCard);
 
 modalCloseButton.addEventListener('click', () => {
     toggleModalWindow(editProfileModal);
