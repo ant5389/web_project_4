@@ -34,8 +34,8 @@ function toggleModalWindow(modal) {
     modal.classList.toggle('popup_opened');
 }
 
-// clone cards
-initialCards.forEach(data => {
+// create new card
+function createCardElement(src, alt, text) {
     const cardElement = cardTemplate.cloneNode(true);
 
     const cardRemove = cardElement.querySelector('.places__remove');
@@ -43,38 +43,9 @@ initialCards.forEach(data => {
     const cardTitle = cardElement.querySelector('.places__location');
     const cardLike = cardElement.querySelector('.places__like-btn');
 
-    cardImage.src = data.src;
-    cardTitle.textContent = data.text;
-    cardImage.alt = data.alt;
-
-    cardRemove.addEventListener('click', removeCard);
-    cardLike.addEventListener('click', toggleLike);
-
-    cardImage.addEventListener('click', () => {
-        popupImage.src = data.src;
-        popupImageTitle.textContent = data.text;
-        popupImage.alt = data.alt;
-
-        toggleModalWindow(imageModalWindow);
-    })
-
-    list.append(cardElement);
-})
-
-// add new card
-function addNewCard(event) {
-    event.preventDefault();
-
-    const cardElement = cardTemplate.cloneNode(true);
-
-    const cardRemove = cardElement.querySelector('.places__remove');
-    const cardImage = cardElement.querySelector('.places__picture');
-    const cardTitle = cardElement.querySelector('.places__location');
-    const cardLike = cardElement.querySelector('.places__like-btn');
-
-    cardImage.src = linkInput.value;
-    cardImage.alt = titleInput.value;
-    cardTitle.textContent = titleInput.value;
+    cardImage.src = src;
+    cardImage.alt = alt;
+    cardTitle.textContent = text;
 
     cardRemove.addEventListener('click', removeCard);
     cardLike.addEventListener('click', toggleLike);
@@ -85,7 +56,23 @@ function addNewCard(event) {
         popupImage.alt = cardTitle.textContent;
 
         toggleModalWindow(imageModalWindow);
-    })
+    });
+
+    return cardElement;
+}
+
+// clone initial cards
+initialCards.forEach(data => {
+    const cardElement = createCardElement(data.src, data.alt, data.text);
+
+    list.append(cardElement);
+})
+
+// add new card
+function addNewCard(event) {
+    event.preventDefault();
+
+    const cardElement = createCardElement(linkInput.value, titleInput.value, titleInput.value);
 
     list.prepend(cardElement);
 
