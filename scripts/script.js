@@ -90,7 +90,7 @@ function addNewCard(event) {
 
 // remove card
 function removeCard(event) {
-    const remove = event.target.parentElement
+    const remove = event.target.parentElement;
     list.removeChild(remove);
 }
 
@@ -143,7 +143,7 @@ addButton.addEventListener('click', () => {
 closeAddCardModal.addEventListener('click', () => {
     toggleModalWindow(addCardModal);
     document.removeEventListener('keydown', handleEsc);
-})
+});
 
 closeImagePopup.addEventListener('click', () => {
     toggleModalWindow(imageModalWindow);
@@ -156,8 +156,8 @@ popupBgProfile.addEventListener('click', () => {
 
 popupBgAddcard.addEventListener('click', () => {
     toggleModalWindow(addCardModal);
-})
+});
 
 popupBgImage.addEventListener('click', () => {
     toggleModalWindow(imageModalWindow);
-})
+});
