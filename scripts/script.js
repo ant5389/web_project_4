@@ -28,10 +28,16 @@ const popupImageTitle = imageModalWindow.querySelector('.popup__image-title');
 const cardTemplate = document.querySelector('.card-template').content.querySelector('.card');
 const list = document.querySelector('.places__list');
 
+//popups
+const ESC_key = 27;
+const popupBgProfile = document.querySelector('.popup__background_type_profile');
+const popupBgAddcard = document.querySelector('.popup__background_type_addcard');
+const popupBgImage = document.querySelector('.popup__background_type_image');
 
 // toggle modals
 function toggleModalWindow(modal) {
     modal.classList.toggle('popup_opened');
+    document.addEventListener('keydown', handleEsc);
 }
 
 // create new card
@@ -109,6 +115,17 @@ function toggleLike(event) {
     likeButton.classList.toggle('places__like-btn_active');
 }
 
+// ESC to close popups
+const handleEsc = (evt) => {
+    evt.preventDefault();
+
+    const activePopup = document.querySelector('.popup_opened');
+
+    if (evt.which === ESC_key) {
+        toggleModalWindow(activePopup);
+    }
+}
+
 // event listeners
 editButton.addEventListener('click', openEditProfileForm);
 editForm.addEventListener('submit', submitProfile);
@@ -116,6 +133,7 @@ addForm.addEventListener('submit', addNewCard);
 
 modalCloseButton.addEventListener('click', () => {
     toggleModalWindow(editProfileModal);
+    document.removeEventListener('keydown', handleEsc);
 });
 
 addButton.addEventListener('click', () => {
@@ -124,8 +142,22 @@ addButton.addEventListener('click', () => {
 
 closeAddCardModal.addEventListener('click', () => {
     toggleModalWindow(addCardModal);
+    document.removeEventListener('keydown', handleEsc);
 })
 
 closeImagePopup.addEventListener('click', () => {
     toggleModalWindow(imageModalWindow);
+    document.removeEventListener('keydown', handleEsc);
 });
+
+popupBgProfile.addEventListener('click', () => {
+    toggleModalWindow(editProfileModal);
+});
+
+popupBgAddcard.addEventListener('click', () => {
+    toggleModalWindow(addCardModal);
+})
+
+popupBgImage.addEventListener('click', () => {
+    toggleModalWindow(imageModalWindow);
+})
