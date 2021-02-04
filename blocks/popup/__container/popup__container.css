@@ -9,7 +9,6 @@
     padding: 34px 36px 36.51px 36px;
     box-sizing: border-box;
     position: relative;
-    z-index: 100000;
 }
 
 @media screen and (max-width: 480px) {
