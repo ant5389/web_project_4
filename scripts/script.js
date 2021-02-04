@@ -37,7 +37,7 @@ const popupBgImage = document.querySelector('.popup__background_type_image');
 // toggle modals
 function toggleModalWindow(modal) {
     modal.classList.toggle('popup_opened');
-    document.addEventListener('keydown', handleEsc);
+    document.addEventListener('keyup', handleEsc);
 }
 
 // create new card
@@ -133,7 +133,7 @@ addForm.addEventListener('submit', addNewCard);
 
 modalCloseButton.addEventListener('click', () => {
     toggleModalWindow(editProfileModal);
-    document.removeEventListener('keydown', handleEsc);
+    document.removeEventListener('keyup', handleEsc);
 });
 
 addButton.addEventListener('click', () => {
@@ -142,12 +142,12 @@ addButton.addEventListener('click', () => {
 
 closeAddCardModal.addEventListener('click', () => {
     toggleModalWindow(addCardModal);
-    document.removeEventListener('keydown', handleEsc);
+    document.removeEventListener('keyup', handleEsc);
 });
 
 closeImagePopup.addEventListener('click', () => {
     toggleModalWindow(imageModalWindow);
-    document.removeEventListener('keydown', handleEsc);
+    document.removeEventListener('keyup', handleEsc);
 });
 
 popupBgProfile.addEventListener('click', () => {
