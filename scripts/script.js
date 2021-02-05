@@ -141,6 +141,7 @@ modalCloseButton.addEventListener('click', () => {
 });
 
 addButton.addEventListener('click', () => {
+    addPic.classList.add('popup__save_disabled');
     openModalWindow(addCardModal);
 });
 
