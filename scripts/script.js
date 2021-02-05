@@ -34,10 +34,15 @@ const popupBgProfile = document.querySelector('.popup__background_type_profile')
 const popupBgAddcard = document.querySelector('.popup__background_type_addcard');
 const popupBgImage = document.querySelector('.popup__background_type_image');
 
-// toggle modals
-function toggleModalWindow(modal) {
-    modal.classList.toggle('popup_opened');
+// open/close modals
+function openModalWindow(modal) {
+    modal.classList.add('popup_opened');
     document.addEventListener('keyup', handleEsc);
+}
+
+function closeModalWindow(modal) {
+    modal.classList.remove('popup_opened');
+    document.removeEventListener('keyup', handleEsc);
 }
 
 // create new card
@@ -61,7 +66,7 @@ function createCardElement(src, alt, text) {
         popupImageTitle.textContent = cardTitle.textContent;
         popupImage.alt = cardTitle.textContent;
 
-        toggleModalWindow(imageModalWindow);
+        openModalWindow(imageModalWindow);
     });
 
     return cardElement;
@@ -85,7 +90,7 @@ function addNewCard(event) {
     titleInput.value = "";
     linkInput.value = "";
 
-    toggleModalWindow(addCardModal);
+    closeModalWindow(addCardModal);
 }
 
 // remove card
@@ -99,14 +104,14 @@ function submitProfile(event) {
     event.preventDefault();
     nameHeader.textContent = nameInput.value;
     subtitleText.textContent = subtitleInput.value;
-    toggleModalWindow(editProfileModal);
+    closeModalWindow(editProfileModal);
 }
 
 // auto-fill input fields
 function openEditProfileForm() {
     nameInput.value = nameHeader.innerText;
     subtitleInput.value = subtitleText.innerText;
-    toggleModalWindow(editProfileModal);
+    openModalWindow(editProfileModal);
 }
 
 // like picture
@@ -122,7 +127,7 @@ const handleEsc = (evt) => {
     const activePopup = document.querySelector('.popup_opened');
 
     if (evt.which === ESC_key) {
-        toggleModalWindow(activePopup);
+        closeModalWindow(activePopup);
     }
 }
 
@@ -132,32 +137,29 @@ editForm.addEventListener('submit', submitProfile);
 addForm.addEventListener('submit', addNewCard);
 
 modalCloseButton.addEventListener('click', () => {
-    toggleModalWindow(editProfileModal);
-    document.removeEventListener('keyup', handleEsc);
+    closeModalWindow(editProfileModal);
 });
 
 addButton.addEventListener('click', () => {
-    toggleModalWindow(addCardModal);
+    openModalWindow(addCardModal);
 });
 
 closeAddCardModal.addEventListener('click', () => {
-    toggleModalWindow(addCardModal);
-    document.removeEventListener('keyup', handleEsc);
+    closeModalWindow(addCardModal);
 });
 
 closeImagePopup.addEventListener('click', () => {
-    toggleModalWindow(imageModalWindow);
-    document.removeEventListener('keyup', handleEsc);
+    closeModalWindow(imageModalWindow);
 });
 
 popupBgProfile.addEventListener('click', () => {
-    toggleModalWindow(editProfileModal);
+    closeModalWindow(editProfileModal);
 });
 
 popupBgAddcard.addEventListener('click', () => {
-    toggleModalWindow(addCardModal);
+    closeModalWindow(addCardModal);
 });
 
 popupBgImage.addEventListener('click', () => {
-    toggleModalWindow(imageModalWindow);
+    closeModalWindow(imageModalWindow);
 });
