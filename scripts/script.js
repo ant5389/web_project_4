@@ -1,3 +1,60 @@
+import FormValidator from './FormValidator.js';
+import Card from './Card.js';
+
+const defaultConfig = {
+    formSelector: ".popup__container",
+    inputSelector: ".popup__field",
+    submitButtonSelector: ".popup__save",
+    inactiveButtonClass: "popup__save_disabled",
+    inputErrorClass: "popup__field_type_error",
+    errorClass: "popup__error_visible"
+};
+
+const initialCards = [{
+        text: "Yosemite Valley",
+        src: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+        alt: "Valley"
+    },
+    {
+        text: "Lake Louise",
+        src: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+        alt: "Lake"
+    },
+    {
+        text: "Bald Mountains",
+        src: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+        alt: "Mountains"
+    },
+    {
+        text: "Latemar",
+        src: "https://code.s3.yandex.net/web-code/latemar.jpg",
+        alt: "Latemar"
+    },
+    {
+        text: "Vanoise National Park",
+        src: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+        alt: "Vanoise"
+    },
+    {
+        text: "Lago di Braies",
+        src: "https://code.s3.yandex.net/web-code/lago.jpg",
+        alt: "Spanish Lake"
+    }
+];
+
+const addCardModal = document.querySelector('.popup_type_addcard');
+const editProfileModal = document.querySelector('.popup_type_edit-profile');
+
+const addCardForm = addCardModal.querySelector('.popup__container');
+const editProfileForm = editProfileModal.querySelector('.popup__container');
+
+
+const editFormValidator = new FormValidator(defaultConfig, editProfileForm);
+const addFormValidator = new FormValidator(defaultConfig, addCardForm);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+
 const editForm = document.querySelector('.popup__container');
 const addForm = document.querySelector('.popup__container_type_addcard');
 
@@ -17,8 +74,7 @@ const linkInput = document.getElementById('linkInput');
 
 const nameHeader = document.querySelector('.profile__name');
 const subtitleText = document.querySelector('.profile__subtitle');
-const addCardModal = document.querySelector('.popup_type_addcard');
-const editProfileModal = document.querySelector('.popup_type_edit-profile');
+
 const addPic = document.querySelector('.popup__save_type_addcard');
 const imageModalWindow = document.querySelector('.popup_type_image');
 const closeImagePopup = imageModalWindow.querySelector('.popup__close');
@@ -74,16 +130,16 @@ function createCardElement(src, alt, text) {
 
 // clone initial cards
 initialCards.forEach(data => {
-    const cardElement = createCardElement(data.src, data.alt, data.text);
+    const card = new Card(data, ".card-template");
 
-    list.append(cardElement);
+    list.append(card.generateCard());
 })
 
 // add new card
 function addNewCard(event) {
     event.preventDefault();
 
-    const cardElement = createCardElement(linkInput.value, titleInput.value, titleInput.value);
+    const cardElement = createCardElement(linkInput.value, titleInput.value, titleInput.value)
 
     list.prepend(cardElement);
 

@@ -54,7 +54,6 @@ function enableValidation({ formSelector, inputSelector, submitButtonSelector, .
     })
 }
 
-
 enableValidation({
     formSelector: ".popup__container",
     inputSelector: ".popup__field",
