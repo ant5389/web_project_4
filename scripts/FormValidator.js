@@ -1,5 +1,6 @@
 class FormValidator {
     constructor(settings, formElement) {
+        this._formSelector = settings.formSelector;
         this._inputSelector = settings.inputSelector;
         this._submitButtonSelector = settings.submitButtonSelector;
         this._inactiveButtonClass = settings.inactiveButtonClass;
@@ -27,21 +28,25 @@ class FormValidator {
 
     _checkInputValidity(input) {
         if (input.validity.valid) {
-            this._hideErrorMessage();
+            this._hideErrorMessage(input, input.validationMessage);
         } else {
-            this._showErrorMessage();
+            this._showErrorMessage(input, input.validationMessage);
         }
     }
 
-    _toggleButtonState(inputs, button) {
-        const isValid = inputs.every((input) => input.validity.valid);
+    _hasInvalidInput(inputs) {
+        return inputs.some((input) => {
+            return !input.validity.valid;
+        });
+    }
 
-        if (isValid) {
-            button.classList.remove(this._inactiveButtonClass);
-            button.removeAttribute('disabled');
-        } else {
+    _toggleButtonState(inputs, button) {
+        if (this._hasInvalidInput(inputs)) {
             button.classList.add(this._inactiveButtonClass);
-            button.setAttribute('disabled', '');
+            button.disabled = true;
+        } else {
+            button.classList.remove(this._inactiveButtonClass);
+            button.disabled = false;
         }
     }
 
@@ -52,8 +57,8 @@ class FormValidator {
 
         inputs.forEach((input) => {
             input.addEventListener('input', () => {
-                this._checkInputValidity();
-                this._toggleButtonState();
+                this._checkInputValidity(input, input.validationMessage);
+                this._toggleButtonState(inputs, button);
             });
         });
     }

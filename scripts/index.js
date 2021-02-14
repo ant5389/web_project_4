@@ -42,16 +42,13 @@ const initialCards = [{
     }
 ];
 
+//validations
 const addCardModal = document.querySelector('.popup_type_addcard');
 const editProfileModal = document.querySelector('.popup_type_edit-profile');
-
 const addCardForm = addCardModal.querySelector('.popup__container');
 const editProfileForm = editProfileModal.querySelector('.popup__container');
-
-
 const editFormValidator = new FormValidator(defaultConfig, editProfileForm);
 const addFormValidator = new FormValidator(defaultConfig, addCardForm);
-
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
@@ -139,7 +136,7 @@ initialCards.forEach(data => {
 function addNewCard(event) {
     event.preventDefault();
 
-    const cardElement = createCardElement(linkInput.value, titleInput.value, titleInput.value)
+    const cardElement = createCardElement(linkInput.value, titleInput.value, titleInput.value);
 
     list.prepend(cardElement);
 

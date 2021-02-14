@@ -3,6 +3,11 @@ function openModalWindow(modal) {
     document.addEventListener('keyup', handleEsc);
 }
 
+function closeModalWindow(modal) {
+    modal.classList.remove('popup_opened');
+    document.removeEventListener('keyup', handleEsc);
+}
+
 const handleEsc = (evt) => {
     evt.preventDefault();
 
