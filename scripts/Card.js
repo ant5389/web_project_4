@@ -1,23 +1,4 @@
-function openModalWindow(modal) {
-    modal.classList.add('popup_opened');
-    document.addEventListener('keyup', handleEsc);
-}
-
-function closeModalWindow(modal) {
-    modal.classList.remove('popup_opened');
-    document.removeEventListener('keyup', handleEsc);
-}
-
-const handleEsc = (evt) => {
-    evt.preventDefault();
-
-    const activePopup = document.querySelector('.popup_opened');
-    const ESC_key = 27;
-
-    if (evt.which === ESC_key) {
-        closeModalWindow(activePopup);
-    }
-}
+import { openModalWindow, closeModalWindow, handleEsc } from './utils.js';
 
 class Card {
     constructor(data, templateSelector) {
@@ -44,26 +25,29 @@ class Card {
         likeButton.classList.toggle('places__like-btn_active');
     }
 
-    _setEventListeners() {
-        const cardRemove = this._card.querySelector('.places__remove');
-        const cardImage = this._card.querySelector('.places__picture');
-        const cardTitle = this._card.querySelector('.places__location');
-        const cardLike = this._card.querySelector('.places__like-btn');
+    _openImage() {
+        const cardImage = document.querySelector('.places__picture');
+        const cardTitle = document.querySelector('.places__location');
         const imageModalWindow = document.querySelector('.popup_type_image');
         const popupImage = imageModalWindow.querySelector('.popup__image');
         const popupImageTitle = imageModalWindow.querySelector('.popup__image-title');
 
+        popupImage.src = cardImage.src;
+        popupImageTitle.textContent = cardTitle.textContent;
+        popupImage.alt = cardTitle.textContent;
+
+        openModalWindow(imageModalWindow);
+    }
+
+    _setEventListeners() {
+        const cardRemove = this._card.querySelector('.places__remove');
+        const cardImage = this._card.querySelector('.places__picture');
+        const cardLike = this._card.querySelector('.places__like-btn');
+
 
         cardRemove.addEventListener('click', this._removeCard);
         cardLike.addEventListener('click', this._toggleLike);
-
-        cardImage.addEventListener('click', () => {
-            popupImage.src = cardImage.src;
-            popupImageTitle.textContent = cardTitle.textContent;
-            popupImage.alt = cardTitle.textContent;
-
-            openModalWindow(imageModalWindow);
-        });
+        cardImage.addEventListener('click', this._openImage);
     }
 
     generateCard() {

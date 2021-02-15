@@ -1,5 +1,7 @@
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
+import { initialCards } from './array.js';
+import { openModalWindow, closeModalWindow } from './utils.js';
 
 const defaultConfig = {
     formSelector: ".popup__container",
@@ -9,38 +11,6 @@ const defaultConfig = {
     inputErrorClass: "popup__field_type_error",
     errorClass: "popup__error_visible"
 };
-
-const initialCards = [{
-        text: "Yosemite Valley",
-        src: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-        alt: "Valley"
-    },
-    {
-        text: "Lake Louise",
-        src: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-        alt: "Lake"
-    },
-    {
-        text: "Bald Mountains",
-        src: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-        alt: "Mountains"
-    },
-    {
-        text: "Latemar",
-        src: "https://code.s3.yandex.net/web-code/latemar.jpg",
-        alt: "Latemar"
-    },
-    {
-        text: "Vanoise National Park",
-        src: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-        alt: "Vanoise"
-    },
-    {
-        text: "Lago di Braies",
-        src: "https://code.s3.yandex.net/web-code/lago.jpg",
-        alt: "Spanish Lake"
-    }
-];
 
 //validations
 const addCardModal = document.querySelector('.popup_type_addcard');
@@ -75,10 +45,7 @@ const subtitleText = document.querySelector('.profile__subtitle');
 const addPic = document.querySelector('.popup__save_type_addcard');
 const imageModalWindow = document.querySelector('.popup_type_image');
 const closeImagePopup = imageModalWindow.querySelector('.popup__close');
-const popupImage = imageModalWindow.querySelector('.popup__image');
-const popupImageTitle = imageModalWindow.querySelector('.popup__image-title');
 
-const cardTemplate = document.querySelector('.card-template').content.querySelector('.card');
 const list = document.querySelector('.places__list');
 
 //popups
@@ -86,44 +53,6 @@ const ESC_key = 27;
 const popupBgProfile = document.querySelector('.popup__background_type_profile');
 const popupBgAddcard = document.querySelector('.popup__background_type_addcard');
 const popupBgImage = document.querySelector('.popup__background_type_image');
-
-// open/close modals
-function openModalWindow(modal) {
-    modal.classList.add('popup_opened');
-    document.addEventListener('keyup', handleEsc);
-}
-
-function closeModalWindow(modal) {
-    modal.classList.remove('popup_opened');
-    document.removeEventListener('keyup', handleEsc);
-}
-
-// create new card
-function createCardElement(src, alt, text) {
-    const cardElement = cardTemplate.cloneNode(true);
-
-    const cardRemove = cardElement.querySelector('.places__remove');
-    const cardImage = cardElement.querySelector('.places__picture');
-    const cardTitle = cardElement.querySelector('.places__location');
-    const cardLike = cardElement.querySelector('.places__like-btn');
-
-    cardImage.src = src;
-    cardImage.alt = alt;
-    cardTitle.textContent = text;
-
-    cardRemove.addEventListener('click', removeCard);
-    cardLike.addEventListener('click', toggleLike);
-
-    cardImage.addEventListener('click', () => {
-        popupImage.src = cardImage.src;
-        popupImageTitle.textContent = cardTitle.textContent;
-        popupImage.alt = cardTitle.textContent;
-
-        openModalWindow(imageModalWindow);
-    });
-
-    return cardElement;
-}
 
 // clone initial cards
 initialCards.forEach(data => {
@@ -136,20 +65,20 @@ initialCards.forEach(data => {
 function addNewCard(event) {
     event.preventDefault();
 
-    const cardElement = createCardElement(linkInput.value, titleInput.value, titleInput.value);
+    const newCard = {
+        text: titleInput.value,
+        src: linkInput.value,
+        alt: titleInput.value
+    };
 
-    list.prepend(cardElement);
+    const cardElement = new Card(newCard, ".card-template");
+
+    list.prepend(cardElement.generateCard());
 
     titleInput.value = "";
     linkInput.value = "";
 
     closeModalWindow(addCardModal);
-}
-
-// remove card
-function removeCard(event) {
-    const remove = event.target.parentElement;
-    list.removeChild(remove);
 }
 
 // submit info
@@ -165,23 +94,6 @@ function openEditProfileForm() {
     nameInput.value = nameHeader.innerText;
     subtitleInput.value = subtitleText.innerText;
     openModalWindow(editProfileModal);
-}
-
-// like picture
-function toggleLike(event) {
-    const likeButton = event.target;
-    likeButton.classList.toggle('places__like-btn_active');
-}
-
-// ESC to close popups
-const handleEsc = (evt) => {
-    evt.preventDefault();
-
-    const activePopup = document.querySelector('.popup_opened');
-
-    if (evt.which === ESC_key) {
-        closeModalWindow(activePopup);
-    }
 }
 
 // event listeners
