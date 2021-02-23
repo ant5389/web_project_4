@@ -16,7 +16,5 @@
     "url": "https://github.com/ant5389/web_project_4/issues"
   },
   "homepage": "https://github.com/ant5389/web_project_4#readme",
-  "dependencies": {
-    "jquery": "^3.5.1"
-  }
+  "dependencies": {}
 }
