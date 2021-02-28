@@ -1,7 +1,8 @@
-import FormValidator from './FormValidator.js';
-import Card from './Card.js';
-import { initialCards } from './array.js';
-import { openModalWindow, closeModalWindow } from './utils.js';
+import "./index.css";
+import FormValidator from '../scripts/FormValidator.js';
+import Card from '../scripts/Card.js';
+import { initialCards } from '../scripts/array.js';
+import { openModalWindow, closeModalWindow } from '../scripts/utils.js';
 
 const defaultConfig = {
     formSelector: ".popup__container",
