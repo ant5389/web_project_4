@@ -1,11 +1,13 @@
 import { openModalWindow, closeModalWindow, handleEsc } from './utils.js';
 
 class Card {
-    constructor(data, templateSelector) {
+    constructor({ data, handleCardClick }, templateSelector) {
         this._text = data.text;
         this._src = data.src;
         this._alt = data.alt;
         this._templateSelector = templateSelector;
+
+        this._handleCardClick = handleCardClick;
     }
 
     _getCardTemplate() {
@@ -47,7 +49,7 @@ class Card {
 
         cardRemove.addEventListener('click', this._removeCard);
         cardLike.addEventListener('click', this._toggleLike);
-        cardImage.addEventListener('click', this._openImage);
+        cardImage.addEventListener('click', () => this._handleCardClick(this.text, this.src));
     }
 
     generateCard() {

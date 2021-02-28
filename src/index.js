@@ -1,6 +1,9 @@
 import "./index.css";
 import FormValidator from '../scripts/FormValidator.js';
 import Card from '../scripts/Card.js';
+import Section from '../scripts/Section.js';
+import PopupWithForm from '../scripts/PopupWithForm.js';
+import PopupWithImage from '../scripts/PopupWithImage.js';
 import { initialCards } from '../scripts/array.js';
 import { openModalWindow, closeModalWindow } from '../scripts/utils.js';
 
@@ -22,6 +25,32 @@ const editFormValidator = new FormValidator(defaultConfig, editProfileForm);
 const addFormValidator = new FormValidator(defaultConfig, addCardForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+
+const editPopup = new PopupWithForm('.popup_type_edit-profile');
+editPopup.setEventListeners();
+const addcardPopup = new PopupWithForm('.popup_type_addcard');
+addcardPopup.setEventListeners();
+const imagePopup = new PopupWithImage('.popup_type_image');
+imagePopup.setEventListeners();
+
+const userInfo = new userInfo({
+    userNameSelector: nameInput,
+    userDescriptionSelector: subtitleInput
+});
+
+const cardList = new Section({
+    items: initialCards,
+    renderer: (data) => {
+        const card = new Card({
+            data,
+            handleCardClick: () => {
+                imagePopup.open(data);
+            }
+        }, ".card-template");
+
+        cardList.addItem(card.generateCard())
+    }
+})
 
 const editForm = document.querySelector('.popup__container');
 const addForm = document.querySelector('.popup__container_type_addcard');
@@ -57,7 +86,12 @@ const popupBgImage = document.querySelector('.popup__background_type_image');
 
 // clone initial cards
 initialCards.forEach(data => {
-    const card = new Card(data, ".card-template");
+    const card = new Card({
+        data,
+        handleCardClick: (text, src) => {
+            imagePopup.open(text, src);
+        }
+    }, ".card-template");
 
     list.append(card.generateCard());
 })
@@ -72,7 +106,12 @@ function addNewCard(event) {
         alt: titleInput.value
     };
 
-    const cardElement = new Card(newCard, ".card-template");
+    const cardElement = new Card({
+        newCard,
+        handleCardClick: (text, src) => {
+            imagePopup.open(text, src);
+        }
+    }, ".card-template");
 
     list.prepend(cardElement.generateCard());
 
