@@ -4,26 +4,40 @@ import Card from '../scripts/Card.js';
 import Section from '../scripts/Section.js';
 import PopupWithForm from '../scripts/PopupWithForm.js';
 import PopupWithImage from '../scripts/PopupWithImage.js';
-import { initialCards } from '../scripts/array.js';
-import { openModalWindow, closeModalWindow } from '../scripts/utils.js';
-
-const defaultConfig = {
-    formSelector: ".popup__container",
-    inputSelector: ".popup__field",
-    submitButtonSelector: ".popup__save",
-    inactiveButtonClass: "popup__save_disabled",
-    inputErrorClass: "popup__field_type_error",
-    errorClass: "popup__error_visible"
-};
+import UserInfo from '../scripts/UserInfo.js';
+import {
+    initialCards,
+    defaultConfig,
+    addCardModal,
+    editProfileModal,
+    addCardForm,
+    editProfileForm,
+    list,
+    editForm,
+    addForm,
+    editButton,
+    addButton,
+    modalCloseButton,
+    closeAddCardModal,
+    nameInput,
+    subtitleInput,
+    titleInput,
+    linkInput,
+    nameHeader,
+    subtitleText,
+    addPic,
+    imageModalWindow,
+    closeImagePopup,
+    popupBgProfile,
+    popupBgAddcard,
+    popupBgImage,
+} from '../utils/constants.js';
+// import { openModalWindow, closeModalWindow } from '../scripts/utils.js';
 
 //validations
-const addCardModal = document.querySelector('.popup_type_addcard');
-const editProfileModal = document.querySelector('.popup_type_edit-profile');
-const addCardForm = addCardModal.querySelector('.popup__container');
-const editProfileForm = editProfileModal.querySelector('.popup__container');
 const editFormValidator = new FormValidator(defaultConfig, editProfileForm);
-const addFormValidator = new FormValidator(defaultConfig, addCardForm);
 editFormValidator.enableValidation();
+const addFormValidator = new FormValidator(defaultConfig, addCardForm);
 addFormValidator.enableValidation();
 
 const editPopup = new PopupWithForm('.popup_type_edit-profile');
@@ -33,56 +47,26 @@ addcardPopup.setEventListeners();
 const imagePopup = new PopupWithImage('.popup_type_image');
 imagePopup.setEventListeners();
 
-const userInfo = new userInfo({
+const userInfo = new UserInfo({
     userNameSelector: nameInput,
     userDescriptionSelector: subtitleInput
 });
 
 const cardList = new Section({
-    items: initialCards,
-    renderer: (data) => {
-        const card = new Card({
-            data,
-            handleCardClick: () => {
-                imagePopup.open(data);
-            }
-        }, ".card-template");
+        data: items,
+        renderer: (item) => {
+            const card = new Card({
+                item,
+                handleCardClick: () => {
+                    imagePopup.open(data);
+                }
+            }, ".card-template");
 
-        cardList.addItem(card.generateCard())
-    }
-})
-
-const editForm = document.querySelector('.popup__container');
-const addForm = document.querySelector('.popup__container_type_addcard');
-
-// open buttons
-const editButton = document.querySelector('.profile__edit-box');
-const addButton = document.querySelector('.profile__add-pic');
-
-//close buttons
-const modalCloseButton = document.querySelector('.popup__close');
-const closeAddCardModal = document.querySelector('.popup__close_type_addcard');
-
-//modal inputs
-const nameInput = document.getElementById('nameInput');
-const subtitleInput = document.getElementById('subtitleInput');
-const titleInput = document.getElementById('titleInput');
-const linkInput = document.getElementById('linkInput');
-
-const nameHeader = document.querySelector('.profile__name');
-const subtitleText = document.querySelector('.profile__subtitle');
-
-const addPic = document.querySelector('.popup__save_type_addcard');
-const imageModalWindow = document.querySelector('.popup_type_image');
-const closeImagePopup = imageModalWindow.querySelector('.popup__close');
-
-const list = document.querySelector('.places__list');
-
-//popups
-const ESC_key = 27;
-const popupBgProfile = document.querySelector('.popup__background_type_profile');
-const popupBgAddcard = document.querySelector('.popup__background_type_addcard');
-const popupBgImage = document.querySelector('.popup__background_type_image');
+            cardList.addItem(card.generateCard())
+        }
+    },
+    list
+);
 
 // clone initial cards
 initialCards.forEach(data => {

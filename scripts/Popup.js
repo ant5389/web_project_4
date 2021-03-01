@@ -1,4 +1,6 @@
-class Popup {
+import Card from './Card.js';
+
+export default class Popup {
     constructor(popupSelector) {
         this._popupElement = document.querySelector(popupSelector);
         this._handleEscClose = this._handleEscClose.bind(this);
@@ -15,9 +17,7 @@ class Popup {
     }
 
     _handleEscClose(evt) {
-        if (evt.which == 27) {
-            this.close();
-        }
+        this.close();
     }
 
     setEventListeners() {
@@ -28,5 +28,3 @@ class Popup {
         })
     }
 }
-
-export default Popup;

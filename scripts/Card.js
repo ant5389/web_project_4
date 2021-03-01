@@ -1,6 +1,6 @@
 import { openModalWindow, closeModalWindow, handleEsc } from './utils.js';
 
-class Card {
+export default class Card {
     constructor({ data, handleCardClick }, templateSelector) {
         this._text = data.text;
         this._src = data.src;
@@ -67,5 +67,3 @@ class Card {
         return this._card;
     }
 }
-
-export default Card;

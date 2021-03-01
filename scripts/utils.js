@@ -1,14 +1,14 @@
-function openModalWindow(modal) {
+export function openModalWindow(modal) {
     modal.classList.add('popup_opened');
     document.addEventListener('keyup', handleEsc);
 }
 
-function closeModalWindow(modal) {
+export function closeModalWindow(modal) {
     modal.classList.remove('popup_opened');
     document.removeEventListener('keyup', handleEsc);
 }
 
-const handleEsc = (evt) => {
+export const handleEsc = (evt) => {
     evt.preventDefault();
 
     const activePopup = document.querySelector('.popup_opened');
@@ -18,5 +18,3 @@ const handleEsc = (evt) => {
         closeModalWindow(activePopup);
     }
 }
-
-export { openModalWindow, closeModalWindow, handleEsc };
