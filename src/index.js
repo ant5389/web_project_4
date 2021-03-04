@@ -1,10 +1,10 @@
 import "./index.css";
-import FormValidator from '../components/FormValidator.js.js';
-import Card from '../components/Card.js.js';
-import Section from '../components/Section.js.js';
-import PopupWithForm from '../components/PopupWithForm.js.js';
-import PopupWithImage from '../components/PopupWithImage.js.js';
-import UserInfo from '../components/UserInfo.js.js';
+import FormValidator from '../components/FormValidator.js';
+import Card from '../components/Card.js';
+import Section from '../components/Section.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import UserInfo from '../components/UserInfo.js';
 import {
     initialCards,
     defaultConfig,
@@ -32,7 +32,8 @@ import {
     popupBgAddcard,
     popupBgImage,
 } from '../utils/constants.js';
-// import { openModalWindow, closeModalWindow } from '../scripts/utils.js';
+
+// import { openModalWindow, closeModalWindow } from '../components/utils.js';
 
 //validations
 const editFormValidator = new FormValidator(defaultConfig, editProfileForm);
@@ -53,7 +54,7 @@ const userInfo = new UserInfo({
 });
 
 const cardList = new Section({
-        data: items,
+        data: initialCards,
         renderer: (item) => {
             const card = new Card({
                 item,
