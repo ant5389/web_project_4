@@ -1,4 +1,4 @@
-import { openModalWindow, closeModalWindow, handleEsc } from './utils.js';
+// import { openModalWindow, closeModalWindow, handleEsc } from './utils.js';
 
 export default class Card {
     constructor({ data, handleCardClick }, templateSelector) {
@@ -27,19 +27,19 @@ export default class Card {
         likeButton.classList.toggle('places__like-btn_active');
     }
 
-    _openImage() {
-        const cardImage = document.querySelector('.places__picture');
-        const cardTitle = document.querySelector('.places__location');
-        const imageModalWindow = document.querySelector('.popup_type_image');
-        const popupImage = imageModalWindow.querySelector('.popup__image');
-        const popupImageTitle = imageModalWindow.querySelector('.popup__image-title');
+    // _openImage() {
+    //     const cardImage = document.querySelector('.places__picture');
+    //     const cardTitle = document.querySelector('.places__location');
+    //     const imageModalWindow = document.querySelector('.popup_type_image');
+    //     const popupImage = imageModalWindow.querySelector('.popup__image');
+    //     const popupImageTitle = imageModalWindow.querySelector('.popup__image-title');
 
-        popupImage.src = cardImage.src;
-        popupImageTitle.textContent = cardTitle.textContent;
-        popupImage.alt = cardTitle.textContent;
+    //     popupImage.src = cardImage.src;
+    //     popupImageTitle.textContent = cardTitle.textContent;
+    //     popupImage.alt = cardTitle.textContent;
 
-        openModalWindow(imageModalWindow);
-    }
+    //     openModalWindow(imageModalWindow);
+    // }
 
     _setEventListeners() {
         const cardRemove = this._card.querySelector('.places__remove');
@@ -49,7 +49,7 @@ export default class Card {
 
         cardRemove.addEventListener('click', this._removeCard);
         cardLike.addEventListener('click', this._toggleLike);
-        cardImage.addEventListener('click', () => this._handleCardClick(this.text, this.src));
+        cardImage.addEventListener('click', () => this._handleCardClick(this._src, this._text));
     }
 
     generateCard() {

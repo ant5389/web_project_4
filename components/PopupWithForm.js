@@ -18,6 +18,12 @@ export default class PopupWithForm extends Popup {
                 super.close();
             }
         });
+        this._popupElement.addEventListener('submit', (evt) => {
+            evt.preventDefault();
+            if (evt.target.classList.contains('_type_addcard')) {
+                super.close();
+            }
+        })
     }
 
     close() {
