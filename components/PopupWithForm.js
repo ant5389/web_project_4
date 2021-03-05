@@ -1,34 +1,39 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-    constructor(popupSelector) {
+    constructor({ handleSubmit, popupSelector, openButton, handleClose }) {
         super(popupSelector);
+        this._handleSubmit = handleSubmit;
+        this._openButton = openButton;
+        this._handleClose = handleClose;
+        this._inputList = this._popupElement.querySelectorAll('.popup__field');
     }
 
     _getInputValues() {
-        this._popupElement.getElementById('nameInput').value = document.querySelector('.profile__name').innerText;
-        this._popupElement.getElementById('subtitleInput').value = document.querySelector('.profile__subtitle').innerText;
-    }
-
-    setEventListeners() {
-        this._popupElement.addEventListener('click', super.close);
-        this._popupElement.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-            if (evt.target.classList.contains('popup__save')) {
-                super.close();
-            }
+        const formOutput = {};
+        this._inputList.forEach(input => {
+            formOutput[input.name] = input.value;
         });
-        this._popupElement.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-            if (evt.target.classList.contains('_type_addcard')) {
-                super.close();
-            }
-        })
+
+        return formOutput;
     }
 
     close() {
-        this._popupElement.getElementById('nameInput').value = "";
-        this._popupElement.getElementById('subtitleInput').value = "";
+        this._handleClose(this._popupElement);
         super.close();
+    }
+
+    setEventListeners() {
+        super.setEventListeners();
+
+        this._popupElement.addEventListener('submit', (evt) => {
+            evt.preventDefault();
+            this._handleSubmit(this._getInputValues());
+            this.close();
+        });
+
+        this._openButton.addEventListener('click', () => {
+            this.open();
+        })
     }
 }

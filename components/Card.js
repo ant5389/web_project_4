@@ -1,5 +1,3 @@
-// import { openModalWindow, closeModalWindow, handleEsc } from './utils.js';
-
 export default class Card {
     constructor({ data, handleCardClick }, templateSelector) {
         this._text = data.text;
@@ -26,20 +24,6 @@ export default class Card {
         const likeButton = event.target;
         likeButton.classList.toggle('places__like-btn_active');
     }
-
-    // _openImage() {
-    //     const cardImage = document.querySelector('.places__picture');
-    //     const cardTitle = document.querySelector('.places__location');
-    //     const imageModalWindow = document.querySelector('.popup_type_image');
-    //     const popupImage = imageModalWindow.querySelector('.popup__image');
-    //     const popupImageTitle = imageModalWindow.querySelector('.popup__image-title');
-
-    //     popupImage.src = cardImage.src;
-    //     popupImageTitle.textContent = cardTitle.textContent;
-    //     popupImage.alt = cardTitle.textContent;
-
-    //     openModalWindow(imageModalWindow);
-    // }
 
     _setEventListeners() {
         const cardRemove = this._card.querySelector('.places__remove');

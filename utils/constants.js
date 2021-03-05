@@ -44,31 +44,7 @@ export const editProfileModal = document.querySelector('.popup_type_edit-profile
 export const addCardForm = addCardModal.querySelector('.popup__container');
 export const editProfileForm = editProfileModal.querySelector('.popup__container');
 export const list = document.querySelector('.places__list');
-export const editForm = document.querySelector('.popup__container');
-export const addForm = document.querySelector('.popup__container_type_addcard');
 
 // open buttons
 export const editButton = document.querySelector('.profile__edit-box');
 export const addButton = document.querySelector('.profile__add-pic');
-
-//close buttons
-export const modalCloseButton = document.querySelector('.popup__close');
-export const closeAddCardModal = document.querySelector('.popup__close_type_addcard');
-
-//modal inputs
-export const nameInput = document.getElementById('nameInput');
-export const subtitleInput = document.getElementById('subtitleInput');
-export const titleInput = document.getElementById('titleInput');
-export const linkInput = document.getElementById('linkInput');
-
-export const nameHeader = document.querySelector('.profile__name');
-export const subtitleText = document.querySelector('.profile__subtitle');
-
-export const addPic = document.querySelector('.popup__save_type_addcard');
-export const imageModalWindow = document.querySelector('.popup_type_image');
-export const closeImagePopup = imageModalWindow.querySelector('.popup__close');
-
-//popups
-export const popupBgProfile = document.querySelector('.popup__background_type_profile');
-export const popupBgAddcard = document.querySelector('.popup__background_type_addcard');
-export const popupBgImage = document.querySelector('.popup__background_type_image');
