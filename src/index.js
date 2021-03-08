@@ -10,7 +10,6 @@ import {
     defaultConfig,
     addCardForm,
     editProfileForm,
-    list,
     editButton,
     addButton
 } from '../utils/constants.js';
@@ -31,8 +30,7 @@ const editPopup = new PopupWithForm({
     handleSubmit: ({ name, subtitle }) => {
         userInfo.setUserInfo(name, subtitle);
     },
-    openButton: editButton,
-    handleClose: (popupElement) => {}
+    openButton: editButton
 });
 editPopup.setEventListeners();
 
@@ -46,14 +44,9 @@ const addcardPopup = new PopupWithForm({
             }
         }, ".card-template");
 
-        list.prepend(card.generateCard());
+        cardList.prependItem(card.generateCard());
     },
-    openButton: addButton,
-    handleClose: (popupElement) => {
-        popupElement.querySelectorAll('.popup__field').forEach((input) => {
-            input.value = "";
-        });
-    }
+    openButton: addButton
 });
 addcardPopup.setEventListeners();
 
@@ -85,5 +78,5 @@ initialCards.forEach(data => {
         }
     }, ".card-template");
 
-    list.append(card.generateCard());
+    cardList.addItem(card.generateCard());
 })

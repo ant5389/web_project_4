@@ -54,6 +54,12 @@ export default class FormValidator {
         const inputs = [...this._form.querySelectorAll(this._inputSelector)];
         const button = this._form.querySelector(this._submitButtonSelector);
 
+        this._form.addEventListener('reset', () => {
+            inputs.forEach((inputElement) => {
+                this._hideErrorMessage(inputElement)
+            })
+            this._toggleButtonState(inputs, button);
+        });
 
         inputs.forEach((input) => {
             input.addEventListener('input', () => {

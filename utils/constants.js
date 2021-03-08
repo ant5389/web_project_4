@@ -43,7 +43,6 @@ export const addCardModal = document.querySelector('.popup_type_addcard');
 export const editProfileModal = document.querySelector('.popup_type_edit-profile');
 export const addCardForm = addCardModal.querySelector('.popup__container');
 export const editProfileForm = editProfileModal.querySelector('.popup__container');
-export const list = document.querySelector('.places__list');
 
 // open buttons
 export const editButton = document.querySelector('.profile__edit-box');
