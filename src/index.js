@@ -55,28 +55,18 @@ imagePopup.setEventListeners();
 
 const cardList = new Section({
         data: initialCards,
-        renderer: (item) => {
+        renderer: (data) => {
             const card = new Card({
-                item,
-                handleCardClick: () => {
-                    imagePopup.open(data);
+                data,
+                handleCardClick: (text, src) => {
+                    imagePopup.open(text, src);
                 }
             }, ".card-template");
 
-            cardList.addItem(card.generateCard())
+            cardList.addItem(card.generateCard());
         }
     },
     ".places__list"
 );
 
-// clone initial cards
-initialCards.forEach(data => {
-    const card = new Card({
-        data,
-        handleCardClick: (text, src) => {
-            imagePopup.open(text, src);
-        }
-    }, ".card-template");
-
-    cardList.addItem(card.generateCard());
-})
+cardList.renderItems();
