@@ -14,13 +14,16 @@
         </header>
         <main class="content">
             <section class="profile">
-                <img class="profile__avatar" src="../images/jacques-cousteau.jpeg" alt="Jacques Cousteau Pic">
+                <button type="button" class="profile__avatar-container">
+                    <img class="profile__avatar" src="../images/jacques-cousteau.jpeg" alt="Jacques Cousteau Pic">
+                    <img class="profile__avatar-btn" src="../images/edit.svg" alt="Edit Avatar">
+                </button>
                 <div class="profile__profile-info">
-                    <h1 class="profile__name">Jacques Cousteau</h1>
+                    <h1 class="profile__name"></h1>
                     <button type="button" class="profile__edit-box">
                         <img class="profile__edit-btn" src="../images/edit.svg" alt="Edit Icon">
                     </button>
-                    <p class="profile__subtitle">Explorer</p>
+                    <p class="profile__subtitle"></p>
                 </div>
                 <button type="button" class="profile__add-pic">
                     <img class="profile__add-btn" src="../images/add.svg" alt="Add Picture Icon">
@@ -34,6 +37,17 @@
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 Around The U.S.</p>
         </footer>
+        <div class="popup popup_type_avatar">
+            <div class="popup__background popup__background_type_avatar"></div>
+            <form class="popup__container popup__container_type_avatar">
+                <button type="button" class="popup__close"></button>
+                <h2 class="popup__title">Change profile picture</h2>
+                <input id="linkInput" type="url" class="popup__field popup__field_type_avatar" placeholder="Image link" name="link" required>
+                <span id="linkInput-error" class="popup__error"></span>
+
+                <button type="submit" class="popup__save">Save</button>
+            </form>
+        </div>
         <div class="popup popup_type_edit-profile">
             <div class="popup__background popup__background_type_profile"></div>
             <form class="popup__container">
@@ -53,10 +67,10 @@
             <form class="popup__container popup__container_type_addcard">
                 <button type="button" class="popup__close popup__close_type_addcard"></button>
                 <h2 class="popup__title popup__title_type_addcard">New place</h2>
-                <input id="titleInput" type="text" class="popup__field popup__field_type_addcard" placeholder="Title" name="text" minlength="1" maxlength="30" required>
+                <input id="titleInput" type="text" class="popup__field popup__field_type_addcard" placeholder="Title" name="name" minlength="1" maxlength="30" required>
                 <span id="titleInput-error" class="popup__error"></span>
 
-                <input id="linkInput" type="url" class="popup__field popup__field_type_addcard" placeholder="Image link" name="src" required>
+                <input id="linkInput" type="url" class="popup__field popup__field_type_addcard" placeholder="Image link" name="link" required>
                 <span id="linkInput-error" class="popup__error"></span>
 
                 <button type="submit" class="popup__save popup__save_type_addcard">Create</button>
@@ -71,6 +85,14 @@
                     <figcaption class="popup__image-title"></figcaption>
                 </figure>
             </div>
+        </div>
+        <div class="popup popup_type_remove-card">
+            <div class="popup__background popup__background_type_remove-card"></div>
+            <form class="popup__container popup__container_type_remove-card">
+                <button type="button" class="popup__close"></button>
+                <h2 class="popup__title">Are you sure?</h2>
+                <button type="submit" class="popup__save">Yes</button>
+            </form>
         </div>
     </div>
     <template class="card-template">
