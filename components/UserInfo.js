@@ -12,7 +12,7 @@ export default class UserInfo {
         return [this._name.innerText, this._subtitle.innerText]
     }
 
-    setUserInfo(name, subtitle, id, avatar) {
+    setUserInfo(name, subtitle, id) {
         this.id = id;
 
         this._name.innerText = name;
