@@ -1,6 +1,8 @@
 @import url(./__card/places__card.css);
 @import url(./__like-btn/places__like-btn.css);
 @import url(./__like-btn_active/places__like-btn_active.css);
+@import url(./__like-box/places__like-box.css);
+@import url(./__counter/places__counter.css);
 @import url(./__location/places__location.css);
 @import url(./__picture/places__picture.css);
 @import url(./__remove/places__remove.css);
