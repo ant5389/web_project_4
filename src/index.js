@@ -30,12 +30,12 @@ const userInfo = new UserInfo({
     userNameSelector: '.profile__name',
     userSubtitleSelector: '.profile__subtitle',
     nameInput: 'nameInput',
-    subtitleInput: 'subtitleInput'
+    subtitleInput: 'subtitleInput',
+    avatar: '.profile__avatar'
 });
 
 api.getUserInfo().then(res => {
-    userInfo.setUserInfo(res.name, res.about, res._id);
-    avatar.src = res.avatar;
+    userInfo.setUserInfo(res.name, res.about, res._id, res.avatar);
 
     api.getCardList().then(res => {
         const cardList = new Section({
@@ -47,8 +47,15 @@ api.getUserInfo().then(res => {
                         imagePopup.open(name, link);
                     },
                     handleDeleteClick: () => {
-                        removeCardPopup.setDeleteId(data._id);
                         removeCardPopup.open();
+                        removeCardPopup.setDeleteFunction(() => {
+                            api.removeCard(card.getId())
+                                .then(() => {
+                                    card.removeCard();
+                                    removeCardPopup.close()
+                                })
+                                .catch((err) => console.log(err));
+                        })
                     }
                 }, ".card-template", api);
 
@@ -66,6 +73,17 @@ api.getUserInfo().then(res => {
                         data: res,
                         handleCardClick: (name, link) => {
                             imagePopup.open(name, link);
+                        },
+                        handleDeleteClick: () => {
+                            removeCardPopup.open();
+                            removeCardPopup.setDeleteFunction(() => {
+                                api.removeCard(card.getId())
+                                    .then(() => {
+                                        card.removeCard();
+                                        removeCardPopup.close()
+                                    })
+                                    .catch((err) => console.log(err));
+                            })
                         }
                     }, ".card-template", api);
 
@@ -101,7 +119,7 @@ const editPopup = new PopupWithForm({
     popupSelector: '.popup_type_edit-profile',
     handleSubmit: ({ name, subtitle }) => {
         return api.setUserInfo({ name, about: subtitle }).then(res => {
-            userInfo.setUserInfo(res.name, res.about, res._id)
+            userInfo.setUserInfo(res.name, res.about, res._id, res.avatar)
         })
     },
     openButton: editButton

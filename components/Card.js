@@ -22,10 +22,9 @@ export default class Card {
         return cardTemplate;
     }
 
-    _removeCard(event) {
-        const remove = event.target.parentElement;
+    removeCard() {
         const list = document.querySelector('.places__list');
-        list.removeChild(remove);
+        list.removeChild(this._card);
     }
 
     _toggleLike(event) {
@@ -41,7 +40,6 @@ export default class Card {
     _updateLikeCounter() {
         const likeCounter = this._card.querySelector('.places__counter');
         likeCounter.textContent = this._likes.length;
-
     }
 
     _setEventListeners(userId) {

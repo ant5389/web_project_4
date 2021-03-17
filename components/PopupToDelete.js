@@ -7,16 +7,17 @@ export default class PopupToDelete extends Popup {
         this._api = api;
     }
 
-    setDeleteId(id) {
-        this._id = id;
+    setDeleteFunction(deleteFunction) {
+        this._deleteFunction = deleteFunction;
     }
 
     setEventListeners() {
         super.setEventListeners();
 
         this._deleteButton.addEventListener('click', () => {
-            this._api.removeCard(this._id);
-            this.close();
+            this._deleteFunction();
+            // this._api.removeCard(this._id);
+            // this.close();
         })
     }
 }
