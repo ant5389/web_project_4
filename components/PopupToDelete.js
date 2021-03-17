@@ -16,8 +16,6 @@ export default class PopupToDelete extends Popup {
 
         this._deleteButton.addEventListener('click', () => {
             this._deleteFunction();
-            // this._api.removeCard(this._id);
-            // this.close();
         })
     }
 }
