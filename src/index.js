@@ -39,39 +39,11 @@ api.getUserInfo()
         userInfo.setUserInfo(res.name, res.about, res._id, res.avatar);
 
         api.getCardList().then(res => {
-            const cardList = new Section({
-                data: res,
-                renderer: (data) => {
-                    const card = new Card({
-                        data,
-                        handleCardClick: (name, link) => {
-                            imagePopup.open(name, link);
-                        },
-                        handleDeleteClick: () => {
-                            removeCardPopup.open();
-                            removeCardPopup.setDeleteFunction(() => {
-                                api.removeCard(card.getId())
-                                    .then(() => {
-                                        card.removeCard();
-                                        removeCardPopup.close()
-                                    })
-                                    .catch((err) => console.log(err));
-                            })
-                        }
-                    }, ".card-template", api);
-
-                    cardList.addItem(card.generateCard(userInfo.id));
-                }
-            }, ".places__list");
-
-            cardList.renderItems();
-
-            const addcardPopup = new PopupWithForm({
-                popupSelector: '.popup_type_addcard',
-                handleSubmit: (data) => {
-                    return api.addCard(data).then(res => {
+                const cardList = new Section({
+                    data: res,
+                    renderer: (data) => {
                         const card = new Card({
-                            data: res,
+                            data,
                             handleCardClick: (name, link) => {
                                 imagePopup.open(name, link);
                             },
@@ -88,13 +60,43 @@ api.getUserInfo()
                             }
                         }, ".card-template", api);
 
-                        cardList.prependItem(card.generateCard(userInfo.id));
-                    });
-                },
-                openButton: addButton
-            });
-            addcardPopup.setEventListeners();
-        });
+                        cardList.addItem(card.generateCard(userInfo.id));
+                    }
+                }, ".places__list");
+
+                cardList.renderItems();
+
+                const addcardPopup = new PopupWithForm({
+                    popupSelector: '.popup_type_addcard',
+                    handleSubmit: (data) => {
+                        return api.addCard(data).then(res => {
+                                const card = new Card({
+                                    data: res,
+                                    handleCardClick: (name, link) => {
+                                        imagePopup.open(name, link);
+                                    },
+                                    handleDeleteClick: () => {
+                                        removeCardPopup.open();
+                                        removeCardPopup.setDeleteFunction(() => {
+                                            api.removeCard(card.getId())
+                                                .then(() => {
+                                                    card.removeCard();
+                                                    removeCardPopup.close()
+                                                })
+                                                .catch((err) => console.log(err));
+                                        })
+                                    }
+                                }, ".card-template", api);
+
+                                cardList.prependItem(card.generateCard(userInfo.id));
+                            })
+                            .catch((err) => console.log(err));
+                    },
+                    openButton: addButton
+                });
+                addcardPopup.setEventListeners();
+            })
+            .catch((err) => console.log(err));
     })
     .catch((err) => console.log(err));
 
