@@ -34,43 +34,16 @@ const userInfo = new UserInfo({
     avatar: '.profile__avatar'
 });
 
-api.getUserInfo().then(res => {
-    userInfo.setUserInfo(res.name, res.about, res._id, res.avatar);
+api.getUserInfo()
+    .then(res => {
+        userInfo.setUserInfo(res.name, res.about, res._id, res.avatar);
 
-    api.getCardList().then(res => {
-        const cardList = new Section({
-            data: res,
-            renderer: (data) => {
-                const card = new Card({
-                    data,
-                    handleCardClick: (name, link) => {
-                        imagePopup.open(name, link);
-                    },
-                    handleDeleteClick: () => {
-                        removeCardPopup.open();
-                        removeCardPopup.setDeleteFunction(() => {
-                            api.removeCard(card.getId())
-                                .then(() => {
-                                    card.removeCard();
-                                    removeCardPopup.close()
-                                })
-                                .catch((err) => console.log(err));
-                        })
-                    }
-                }, ".card-template", api);
-
-                cardList.addItem(card.generateCard(userInfo.id));
-            }
-        }, ".places__list");
-
-        cardList.renderItems();
-
-        const addcardPopup = new PopupWithForm({
-            popupSelector: '.popup_type_addcard',
-            handleSubmit: (data) => {
-                return api.addCard(data).then(res => {
+        api.getCardList().then(res => {
+            const cardList = new Section({
+                data: res,
+                renderer: (data) => {
                     const card = new Card({
-                        data: res,
+                        data,
                         handleCardClick: (name, link) => {
                             imagePopup.open(name, link);
                         },
@@ -87,14 +60,43 @@ api.getUserInfo().then(res => {
                         }
                     }, ".card-template", api);
 
-                    cardList.prependItem(card.generateCard(userInfo.id));
-                });
-            },
-            openButton: addButton
+                    cardList.addItem(card.generateCard(userInfo.id));
+                }
+            }, ".places__list");
+
+            cardList.renderItems();
+
+            const addcardPopup = new PopupWithForm({
+                popupSelector: '.popup_type_addcard',
+                handleSubmit: (data) => {
+                    return api.addCard(data).then(res => {
+                        const card = new Card({
+                            data: res,
+                            handleCardClick: (name, link) => {
+                                imagePopup.open(name, link);
+                            },
+                            handleDeleteClick: () => {
+                                removeCardPopup.open();
+                                removeCardPopup.setDeleteFunction(() => {
+                                    api.removeCard(card.getId())
+                                        .then(() => {
+                                            card.removeCard();
+                                            removeCardPopup.close()
+                                        })
+                                        .catch((err) => console.log(err));
+                                })
+                            }
+                        }, ".card-template", api);
+
+                        cardList.prependItem(card.generateCard(userInfo.id));
+                    });
+                },
+                openButton: addButton
+            });
+            addcardPopup.setEventListeners();
         });
-        addcardPopup.setEventListeners();
-    });
-});
+    })
+    .catch((err) => console.log(err));
 
 //validations
 const editFormValidator = new FormValidator(defaultConfig, editProfileForm);
@@ -107,9 +109,11 @@ avatarFormValidator.enableValidation();
 const editAvatarPic = new PopupWithForm({
     popupSelector: '.popup_type_avatar',
     handleSubmit: (res) => {
-        return api.setUserAvatar({ avatar: res.link }).then(res => {
-            avatar.src = res.avatar;
-        });
+        return api.setUserAvatar({ avatar: res.link })
+            .then(res => {
+                avatar.src = res.avatar;
+            })
+            .catch((err) => console.log(err));
     },
     openButton: editAvatar
 });
@@ -118,9 +122,11 @@ editAvatarPic.setEventListeners();
 const editPopup = new PopupWithForm({
     popupSelector: '.popup_type_edit-profile',
     handleSubmit: ({ name, subtitle }) => {
-        return api.setUserInfo({ name, about: subtitle }).then(res => {
-            userInfo.setUserInfo(res.name, res.about, res._id, res.avatar)
-        })
+        return api.setUserInfo({ name, about: subtitle })
+            .then(res => {
+                userInfo.setUserInfo(res.name, res.about, res._id, res.avatar)
+            })
+            .catch((err) => console.log(err));
     },
     openButton: editButton
 });

@@ -9,7 +9,6 @@ export default class Api {
                 headers: this._headers
             })
             .then(res => res.ok ? res.json() : Promise.reject(new Error('Error:' + res.statusText)))
-            .catch((err) => console.log(err));
     }
 
     getUserInfo() {
@@ -17,7 +16,6 @@ export default class Api {
                 headers: this._headers
             })
             .then(res => res.ok ? res.json() : Promise.reject('Error:' + res.statusText))
-            .catch((err) => console.log(err));
     }
 
     addCard({ name, link }) {
@@ -27,7 +25,6 @@ export default class Api {
                 body: JSON.stringify({ name, link })
             })
             .then(res => res.ok ? res.json() : Promise.reject('Error:' + res.statusText))
-            .catch((err) => console.log(err));
     }
 
     removeCard(cardID) {
@@ -36,7 +33,6 @@ export default class Api {
                 method: "DELETE"
             })
             .then(res => res.ok ? res.json() : Promise.reject('Error:' + res.statusText))
-            .catch((err) => console.log(err));
     }
 
     addLikeCard(cardID) {
@@ -45,7 +41,6 @@ export default class Api {
                 method: "PUT"
             })
             .then(res => res.ok ? res.json() : Promise.reject('Error:' + res.statusText))
-            .catch((err) => console.log(err));
     }
 
     removeLikeCard(cardID) {
@@ -54,7 +49,6 @@ export default class Api {
                 method: "DELETE"
             })
             .then(res => res.ok ? res.json() : Promise.reject('Error:' + res.statusText))
-            .catch((err) => console.log(err));
     }
 
     setUserInfo({ name, about }) {
@@ -64,7 +58,6 @@ export default class Api {
                 body: JSON.stringify({ name, about })
             })
             .then(res => res.ok ? res.json() : Promise.reject('Error:' + res.statusText))
-            .catch((err) => console.log(err));
     }
 
     setUserAvatar({ avatar }) {
@@ -74,6 +67,5 @@ export default class Api {
                 body: JSON.stringify({ avatar })
             })
             .then(res => res.ok ? res.json() : Promise.reject('Error:' + res.statusText))
-            .catch((err) => console.log(err));
     }
 }

@@ -17,14 +17,13 @@ export default class Card {
     }
 
     _getCardTemplate() {
-        const cardTemplate = document.querySelector(this._templateSelector).content.querySelector('.card');
+        const cardTemplate = document.querySelector(this._templateSelector).content.cloneNode(true).querySelector('.card');
 
         return cardTemplate;
     }
 
     removeCard() {
-        const list = document.querySelector('.places__list');
-        list.removeChild(this._card);
+        this._card.remove();
     }
 
     _toggleLike(event) {
@@ -69,7 +68,7 @@ export default class Card {
     }
 
     generateCard(userId) {
-        this._card = this._getCardTemplate().cloneNode(true);
+        this._card = this._getCardTemplate();
 
         const cardImage = this._card.querySelector('.places__picture');
         const cardTitle = this._card.querySelector('.places__location');
