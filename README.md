@@ -21,3 +21,5 @@ Future improvements include making the site more responsive and react quicker in
 **Project**
 
 * [Link to the project](https://ant5389.github.io/web_project_4/index.html)
+
+* [Link to gh-pages repo](https://ant5389.github.io/gh-pages)
